@@ -74,71 +74,6 @@ function moveSnake() {
     score += 1;
     scoreText.textContent = score;
     createFood();
-<<<<<<< Updated upstream
-    drawFood();
-    nextTick();
-};
-function nextTick(){
-    if(running){
-        setTimeout(()=>{
-            clearBoard();
-            drawFood();
-            moveSnake();
-            drawSnake();
-            checkGameOver();
-            nextTick();
-        }, 75);
-    }
-    else{
-        displayGameOver();
-    }
-};
-function clearBoard(){
-    ctx.fillStyle = boardBackground;
-    ctx.fillRect(0, 0, gameWidth, gameHeight);
-};
-function createFood(){
-    function randomFood(min, max){
-        const randNum = Math.round((Math.random() * (max - min) + min) / unitSize) * unitSize;
-        return randNum;
-    }
-    foodX = randomFood(0, gameWidth - unitSize);
-    foodY = randomFood(0, gameWidth - unitSize);
-};
-function drawFood(){
-    ctx.fillStyle = foodColor;
-    ctx.fillRect(foodX, foodY, unitSize, unitSize);
-};
-function moveSnake(){
-    const head = {x: snake[0].x + xVelocity,
-                  y: snake[0].y + yVelocity};
-    
-    snake.unshift(head);
-    //if food is eaten
-    if(snake[0].x == foodX && snake[0].y == foodY){
-        score+=1;
-        scoreText.textContent = score;
-        createFood();
-    }
-    else{
-        snake.pop();
-    }     
-};
-function drawSnake(){
-    ctx.fillStyle = snakeColor;
-    ctx.strokeStyle = snakeBorder;
-    snake.forEach(snakePart => {
-        ctx.fillRect(snakePart.x, snakePart.y, unitSize, unitSize);
-        ctx.strokeRect(snakePart.x, snakePart.y, unitSize, unitSize);
-    })
-};
-function changeDirection(event){
-    const keyPressed = event.keyCode;
-    const LEFT = 37;
-    const UP = 38;
-    const RIGHT = 39;
-    const DOWN = 40;
-=======
   } else {
     snake.pop();
   }
@@ -156,8 +91,7 @@ function changeDirection(event) {
   const LEFT = 37;
   const UP = 38;
   const RIGHT = 39;
-  const DOWN = 41;
->>>>>>> Stashed changes
+  const DOWN = 40;
 
   const goingUp = yVelocity == -unitSize;
   const goingDown = yVelocity == unitSize;
